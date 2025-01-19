@@ -2,3 +2,5 @@ extends ../../layouts/default.pug
 
 block main 
     h1 Danh sách sản phẩm
+    each item in products
+        li= item.name

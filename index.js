@@ -1,7 +1,10 @@
 const express = require("express");
+const database = require("./config/database");
 require('dotenv').config();
 const route = require("./routers/client/index.route")
+
 const app = express();
+database.connect();
 const port = process.env.PORT;
 
 app.set('views', 'views');

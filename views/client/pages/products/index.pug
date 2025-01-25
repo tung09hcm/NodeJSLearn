@@ -2,5 +2,8 @@ extends ../../layouts/default.pug
 
 block main 
     h1 Danh sách sản phẩm
+    button(button-status="") ALL
+    button(button-status = "true") Active 
+    button(button-status = "false") Deactive
     each item in products
-        li= item.name
+        li= item.name + " " + item.active

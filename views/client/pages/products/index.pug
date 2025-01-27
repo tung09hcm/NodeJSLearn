@@ -1,9 +1,18 @@
 extends ../../layouts/default.pug
-
+include ../../mixins/filter-status.pug
 block main 
     h1 Danh sách sản phẩm
-    button(button-status="") ALL
-    button(button-status = "true") Active 
-    button(button-status = "false") Deactive
+    +filterStatus(filterStatus)
+
+    form(id ="form-submit")
+        input(type="text" name="keyword" placeholder="Enter your name" value= keyword)
+        button(type="submit") Submit
+
     each item in products
         li= item.name + " " + item.active
+
+    nav 
+        ul 
+            - for (var i = 1; i <= Math.ceil(count / limit); i++)
+                li
+                    button.pagination(id = i)= i

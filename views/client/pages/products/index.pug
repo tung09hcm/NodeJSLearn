@@ -10,9 +10,32 @@ block main
 
     each item in products
         li= item.name + " " + item.active
+        if (item.active == true) 
+            a(  
+                href="javascript:;" 
+                button-change-status 
+                data-status="true"
+                id=item.id
+            ) Deactive 
+        else 
+            a(
+                href="javascript:;" 
+                button-change-status 
+                data-status="false"
+                id=item.id
+            ) Active 
 
     nav 
         ul 
             - for (var i = 1; i <= Math.ceil(count / limit); i++)
                 li
                     button.pagination(id = i)= i
+
+    form(
+        action=""
+        method = "POST"
+        id="form-change-status"
+        data-path=`/products/change-status`
+    ) 
+
+    script(src="./client/js/product.js")   

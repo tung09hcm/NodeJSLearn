@@ -8,6 +8,8 @@ block main
         input(type="text" name="keyword" placeholder="Enter your name" value= keyword)
         button(type="submit") Submit
 
+    //- tạo 1 form ẩn để submit
+
     each item in products
         li= item.name + " " + item.active
         if (item.active == true) 
@@ -24,6 +26,7 @@ block main
                 data-status="false"
                 id=item.id
             ) Active 
+        input(type="checkbox" id_product=item.id id="checkbox-item")
 
     nav 
         ul 

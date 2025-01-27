@@ -9,6 +9,7 @@ const route_admin = require("./routers/admin/index.route")
 
 const app = express();
 app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: true })); // nhận body parser cho nhanh
 database.connect();
 const port = process.env.PORT;
 

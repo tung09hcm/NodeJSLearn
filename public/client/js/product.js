@@ -27,6 +27,7 @@ if(change_status_button.length > 0)
 
 // Change multi status
 const change_multi_status = document.querySelectorAll("#checkbox-item");
+const tick_box = document.querySelector("#tick");
 const array_status = [];
 if(change_multi_status.length > 0)
 {
@@ -47,6 +48,7 @@ if(change_multi_status.length > 0)
                 console.log("Un-tick: " + item.getAttribute("id_product"));
             }
             console.log(array_status);
+            tick_box.value = array_status.join(",");
         })
     })
 }

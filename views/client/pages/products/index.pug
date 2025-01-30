@@ -7,7 +7,12 @@ block main
     form(id ="form-submit")
         input(type="text" name="keyword" placeholder="Enter your name" value= keyword)
         button(type="submit") Submit
-
+    form(id="form-tick" method = "POST" action="/products/change-multi-status?_method=PATCH")
+        input(type="text" name="tick" id="tick")
+        select(name="options" id="options")
+            option(value="1") Deactive
+            option(value="2") Active
+        button(type="submit") Submit
     //- tạo 1 form ẩn để submit
 
     each item in products

@@ -41,8 +41,23 @@ module.exports.changeStatus = async (req,res) => {
     const status = req.params.status;
     const id = req.params.id;
 
-
+    console.log("type: " + typeof status);
     await Product.updateOne({_id: id}, {active: status});
-    res.redirect("back");
+    res.redirect(req.get("Referer") || "/");
 }
 
+module.exports.changeMultiStatus = async (req,res) => {
+    const selectedStatus = req.body.options;
+    const tickedProducts = req.body.tick ? req.body.tick.split(",") : [];
+    console.log(selectedStatus);
+    console.log(tickedProducts);
+    let status = true;
+    if(parseInt(selectedStatus) === 1){
+        status= false;
+    }else status = true;
+    tickedProducts.forEach(async (element) => {
+        await Product.updateOne({_id: element}, {active: status});
+    });
+    res.redirect(req.get("Referer") || "/");
+}
+    

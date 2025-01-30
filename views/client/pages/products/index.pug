@@ -2,6 +2,11 @@ extends ../../layouts/default.pug
 include ../../mixins/filter-status.pug
 block main 
     h1 Danh sách sản phẩm
+
+    - if (messages.success)
+        .message.success
+        span= messages.success
+
     +filterStatus(filterStatus)
 
     form(id ="form-submit")

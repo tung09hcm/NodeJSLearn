@@ -43,6 +43,7 @@ module.exports.changeStatus = async (req,res) => {
 
     console.log("type: " + typeof status);
     await Product.updateOne({_id: id}, {active: status});
+    req.flash("success", "cập nhật trạng thái thành công");
     res.redirect(req.get("Referer") || "/");
 }
 
